@@ -1,0 +1,5 @@
+.bodybg{
+    -fx-background-image: url("burungback.gif");
+    -fx-background-position: center;
+    -fx-background-size: 100% 100%;
+    }

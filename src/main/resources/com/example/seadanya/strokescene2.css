@@ -1,0 +1,5 @@
+.text{
+    -fx-stroke: black;
+    -fx-stroke-width: 1px;
+    -fx-font-size: 5em;
+}

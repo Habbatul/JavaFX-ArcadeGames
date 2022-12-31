@@ -1,0 +1,51 @@
+.bodybg{
+    -fx-background-image: url("backgron_nama.gif");
+    -fx-background-position: center;
+    -fx-background-size: 100% 100%;
+    }
+.text-field{
+    -fx-font-family: "IMPACT";
+    -fx-font-size: 4.8em;
+   -fx-border-color: #d0d4c8;
+   -fx-text-fill: green;
+   -fx-border-width: 2;
+   -fx-border-radius: 1;
+   -fx-border: gone;
+   -fx-background-color: transparent;
+   -fx-alignment: center;
+}
+    /*------------------------------------------------------------------------------------*/
+
+    #sale
+    {
+        -fx-padding: 8 15 15 15;
+        -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
+        -fx-background-radius: 8;
+        -fx-background-color:
+                linear-gradient(from 0% 93% to 0% 100%,#484d3e 0%,#5b614f 100%),
+                 #41423e,
+                 #b8bdae,
+                radial-gradient(center 50% 50%, radius 100%,#d0d4c8,#6e7365);
+        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
+        -fx-font-weight: bold;
+        -fx-font-size: 3.1em;
+        -fx-text-fill: green;
+
+    }
+
+    #sale:hover
+    {
+
+        -fx-background-color:
+                linear-gradient(from 0% 93% to 0% 100%,#484d3e 0%,#5b614f 100),
+                #41423e,
+                #b8bdae,
+                radial-gradient(center 50% 50%,radius 100%,#d0d4c8,#6e7365);
+    }
+
+    #sale:pressed
+    {
+         -fx-padding: 10 15 13 15;
+         -fx-background-insets: 2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+
+    }

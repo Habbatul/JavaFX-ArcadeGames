@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPaneMain" prefHeight="720.0" prefWidth="720.0" styleClass="bodybg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.seadanya.SceneController">
+   <children>
+      <Text layoutX="157.0" layoutY="207.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Selamat Datang di Game" textAlignment="CENTER" wrappingWidth="406.13671875">
+         <font>
+            <Font size="55.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.24160371720790863" green="0.6973684430122375" blue="0.20017056167125702" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5979979038238525" green="0.6842105388641357" blue="0.459307998418808" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <GridPane layoutX="36.0" layoutY="561.0" prefHeight="16.0" prefWidth="649.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="13.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="29.0" minHeight="0.0" prefHeight="13.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="29.0" minHeight="0.0" prefHeight="13.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="29.0" minHeight="0.0" prefHeight="13.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="36.0" minHeight="0.0" prefHeight="5.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="36.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="36.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="17.0" minHeight="0.0" prefHeight="4.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button id="sale" mnemonicParsing="false" onAction="#exit" onMousePressed="#SEonPress" onMouseReleased="#SEonReleased" prefHeight="30.0" prefWidth="385.0" stylesheets="@inputnama.css" text="Keluar" GridPane.columnIndex="1">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button id="sale" mnemonicParsing="false" onAction="#switchToScenediff" onMousePressed="#SEonPress" onMouseReleased="#SEonReleased" prefHeight="30.0" prefWidth="385.0" stylesheets="@inputnama.css" text="Mulai">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+      <Button id="sale" layoutX="27.0" layoutY="38.0" mnemonicParsing="false" onAction="#skor1" onMousePressed="#SEonPress" onMouseReleased="#SEonReleased" prefHeight="51.0" prefWidth="162.0" text="Scoreboard">
+         <stylesheets>
+            <URL value="@inputnama.css" />
+            <URL value="@buttonkembali.css" />
+         </stylesheets>
+      </Button>
+   </children>
+</AnchorPane>
