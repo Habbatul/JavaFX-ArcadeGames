@@ -28,6 +28,9 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 
@@ -67,9 +70,11 @@ public class SceneController {
     boolean gameOver = false;static int level=10;static int jumlah=4;static int trigergerak=0;static int batasjurus=3;
     static int waktuspawn=0;static int arah=0;static int durasisprinta=0;static int klikgameover=0;static int wizardposisi=1;
     static int WizardBertemu=1;static int Wizardberhenti=2; static double posisiWizardDemonY=0;static double posisiWizardDemonX=0; static int triggerchatwizard=1;
-    static boolean wizardtriggerTombol=false;static int directn=0; static boolean kondisiMusikHard=true; static int ceksoundDash =0;
+    static boolean wizardtriggerTombol=false; static boolean kondisiMusikHard=true; static int ceksoundDash =0;
     static Sound musik = new Sound();
     static Sound SE = new Sound();
+
+    static int kepencet=0;static int jumlah_kepencet=0;
 //musik=============================================================================================================================
 
     public void playMusic(int i){
@@ -776,19 +781,19 @@ public class SceneController {
                     if(trigergerak<=200){
                         if (xx0 == 1) {
                             for(int i=0;i<=90;i++){
-                                moneybag.addVelocity(0, 0.001);}
+                                moneybag.addVelocity(0, 0.01);}
                         }
                         if (xx0 == 3) {
                             for(int i=0;i<=90;i++){
-                                moneybag.addVelocity(0.001, 0);}
+                                moneybag.addVelocity(0.01, 0);}
                         }
                         if (xx0 == 0) {
                             for(int i=0;i<=90;i++){
-                                moneybag.addVelocity(-0.001, 0);}
+                                moneybag.addVelocity(-0.01, 0);}
                         }
                         if (xx0 == 2) {
                             for(int i=0;i<=90;i++){
-                                moneybag.addVelocity(0, -0.001);}
+                                moneybag.addVelocity(0, -0.01);}
                         }
                         moneybag.update(elapsedTime);
 
@@ -801,11 +806,11 @@ public class SceneController {
                         }
                         if (xx0 == 3) {
                             for(int i=0;i<=90;i++){
-                            moneybag.addVelocity(0.3, 0);}
+                            moneybag.addVelocity(-0.3, 0);}
                         }
                         if (xx0 == 0) {
                             for(int i=0;i<=90;i++){
-                            moneybag.addVelocity(-0.3, 0);}
+                            moneybag.addVelocity(0.3, 0);}
                         }
                         if (xx0 == 2) {
                             for(int i=0;i<=90;i++){
@@ -1117,18 +1122,16 @@ public class SceneController {
             MainProgram.setCekLaguMainMenu(false);
             playMusic(2);
         }else if (!kondisiMusikHard){}System.out.println(kondisiMusikHard);
-        test.koneksi();
         x=1;int makanan = 4;
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        TimerSimple waktu = new TimerSimple();
         klikgameover=0;
-        if(level ==10){waktu.setSecondsPassed(17);}
-        if(level==15){waktu.setSecondsPassed(17);}
-        if(level==20){waktu.setSecondsPassed(20);}
+        jumlah_kepencet=0;
+        if(level ==10){kepencet=3;}
+        if(level==15){kepencet=3;}
+        if(level==20){kepencet=1;}
         waktuspawnburung sspawnburung = new waktuspawnburung();
         sspawnburung.startburung();
         waktuspawnburung.setSecondsPassedb(0);
-        waktu.start();
 
         Image image = new Image("file:C:\\Users\\win 10\\Pictures\\burungback.gif",720,720,false,false);
         ImageView mv= new ImageView(image);
@@ -1160,15 +1163,15 @@ public class SceneController {
         ///148x135
         if(level ==10){
             jumlah=5;
-            makanan=11;
+            makanan=7;
         }
         else if(level==15){
             jumlah=10;
-            makanan=23;
+            makanan=15;
         }
         else if(level ==20){
             jumlah=10;
-            makanan=37;
+            makanan=21;
         }
 
         Sprite FRENZY = new Sprite();
@@ -1194,6 +1197,10 @@ public class SceneController {
 
         int finalMakanan = makanan;
         //cek untuk lanjut level
+        final int [] directn = {1};
+        final double[] waktuSpawnx = {1};
+        final int[] i = {0};
+        final int[][] cekernilaistaticx = {{0}};
 
         new AnimationTimer()
         {
@@ -1203,30 +1210,35 @@ public class SceneController {
                 // calculate time since last update.
                 double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
                 lastNanoTime.value = currentNanoTime;
+                waktuSpawnx[0] += 1;
                 // game logic
                 gc.clearRect(0, 0, 720, 720);
                 //jangan lupa pakaii
-
-                if (!jojo[0]){
-                    cekernilaistatic++;
-                    if(cekernilaistatic>=300){
+                System.out.println(cekernilaistaticx[0][0]);
+                if (!jojo[0] && cekernilaistaticx[0][0]>0){
+                    cekernilaistaticx[0][0]++;
+                    if(cekernilaistaticx[0][0]>=25){
                         explode.setImage("file:", 150, 150);
-                        cekernilaistatic=0;
                         jojo[0]=true;
+                        cekernilaistaticx[0][0]=0;
                     }
                 }
 //spawn buwung sementara===============================
-                if (sspawnburung.getSecondsPassedb() % 100 ==0 ){
+
+
+
+                if (waktuSpawnx[0] % 100 ==0 ){
                         Sprite robotKepiting = new Sprite();
                         robotKepiting.setImage("file:C:\\Users\\win 10\\Pictures\\burung.gif", 150, 150);
                         double py = (600) * Math.random();
                         robotKepiting.setPositionX(750);
                         robotKepiting.setPositionY(py);
                         robotList.add(robotKepiting);
+                        jumlah_kepencet+=1;
                 }
 //=============naggaaaaaaaaaaaaaaaaaa==========================================
-
-                if (sspawnburung.getSecondsPassedb() % 120 == 0 ){
+//System.out.println(waktuSpawnx[0]);
+                if (waktuSpawnx[0] % 120 == 0 ){
                         Sprite naga = new Sprite();
                         naga.setImage("file:C:\\Users\\win 10\\Pictures\\naga.gif", 150, 150);
                         double py = (400) * Math.random();
@@ -1234,43 +1246,46 @@ public class SceneController {
                         naga.setPositionY(py);
                         nagaList.add(naga);
                     }
+
 //System.out.println(sspawnburung.getSecondsPassedb());
                 Iterator<Sprite> nagabagIter = nagaList.iterator();
                 while(nagabagIter.hasNext()) {
-                    Sprite naga=nagabagIter.next();
-            canvas.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    Rectangle2D rect = naga.getBoundary();
-                    if(mouseEvent.getX() > rect.getMinX()
-                            && mouseEvent.getX() < rect.getMaxX()
-                            && mouseEvent.getY() > rect.getMinY()
-                            && mouseEvent.getY() < rect.getMaxY()) {
-                        playSE(4);
-                        jojo[0] =false;
-                        //explode animation==================================
-                        explode.setImage("file:C:\\Users\\win 10\\Pictures\\explosion.gif", 150, 150);
-                        explode.setPosition(mouseEvent.getX()-100, mouseEvent.getY()-100);
-                        //--================================================================
-                        naga.setImage("file:",0,0);
-                        scorevalue-=2;
-                    }
+                      Sprite naga=nagabagIter.next();
+                    canvas.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+                            Rectangle2D rect = naga.getBoundary();
+                            if(mouseEvent.getX() > rect.getMinX()
+                                    && mouseEvent.getX() < rect.getMaxX()
+                                    && mouseEvent.getY() > rect.getMinY()
+                                    && mouseEvent.getY() < rect.getMaxY()) {
+                                playSE(4);
+                                jojo[0] =false;
+                                cekernilaistaticx[0][0] =1;
+                                //explode animation==================================
+                                explode.setImage("file:C:\\Users\\win 10\\Pictures\\explosion.gif", 150, 150);
+                                explode.setPosition(mouseEvent.getX()-100, mouseEvent.getY()-100);
+                                //--================================================================
+                                naga.setImage("file:",0,0);
+                                scorevalue-=2;
+                                kepencet-=1;
+                            }
 
-                }
+                        }
 
-            });
-                    naga.addVelocity(-250,0);
-                    //direction dibuat untuk gerakan atas bawah pada naga
-                    directn++;
-                    //System.out.println(directn);
-                    if (directn >=0 && directn <=1000){
-                        naga.addVelocity(0,100);}
-                    if (directn >1000 && directn <=2000){
-                        naga.addVelocity(0,-100);}
-                    if (!((directn >=0 && directn <=1000) || (directn >1000 && directn <=2000))){directn=0;}
-                   // System.out.println(direct);
-                    naga.update(elapsedTime);
-                    naga.setVelocity(0,0);
+                    });
+                            naga.addVelocity(-250,0);
+                            //direction dibuat untuk gerakan atas bawah pada naga
+                             directn[0]++;
+                            //System.out.println(directn);
+                            if (directn[0] >=0 && directn[0]<=1000){
+                                naga.addVelocity(0,100);}
+                            if (directn[0] >1000 && directn[0] <=2000){
+                                naga.addVelocity(0,-100);}
+                            if (!((directn[0]>=0 && directn[0] <=1000) || (directn[0] >1000 && directn[0] <=2000))){directn[0]=0;}
+                           // System.out.println(direct);
+                            naga.update(elapsedTime);
+                            naga.setVelocity(0,0);
                 }
  // =========================================nagaaaaaa=====================================================
 
@@ -1288,6 +1303,7 @@ public class SceneController {
                                     && mouseEvent.getY() < rect.getMaxY()) {
                                 playSE(3);
                                 jojo[0] =false;
+                                cekernilaistaticx[0][0] =1;
                                 //explode animation==================================
                                 explode.setImage("file:C:\\Users\\win 10\\Pictures\\explosion.gif", 150, 150);
                                 explode.setPosition(mouseEvent.getX()-100, mouseEvent.getY()-100);
@@ -1295,10 +1311,9 @@ public class SceneController {
                                 robotKepiting.setImage("file:",0,0);
                                 scorevalue+=1;
                             }
-
                         }
-
                     });
+                    //ketika mengeklik tidak kena
                     //kondisi ==============================================================================================
                     FRENZY.setPosition(143, 300);
                     double speed=3;
@@ -1327,7 +1342,7 @@ public class SceneController {
                 for (Sprite robotKepiting : robotList )
                     robotKepiting.render( gc );
                 FRENZY.render(gc);
-                String pointsText = "Point: " + (scorevalue)+"\nWaktu : "+waktu.getSecondsPassed();
+                String pointsText = "Point: " + (scorevalue)+"\nNyawa : "+kepencet;
                 gc.fillText( pointsText, 375, 36 );
                 gc.strokeText( pointsText, 375, 36 );
 
@@ -1397,7 +1412,6 @@ public class SceneController {
                         b.strokeText(waktuhabis, 350, 300);
                         try {
                             sspawnburung.stopb();
-                            waktu.stop();
 
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -1410,7 +1424,6 @@ public class SceneController {
                         level =20;
                         try {
                             sspawnburung.stopb();
-                            waktu.stop();
 
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -1423,7 +1436,6 @@ public class SceneController {
                         level =15;
                         try {
                             sspawnburung.stopb();
-                            waktu.stop();
 
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -1432,19 +1444,24 @@ public class SceneController {
                     System.out.println(penghenti);
                 }
 
-                if( waktu.getSecondsPassed()==0){gameOver=true;}
-                if(scorevalue>10&&scorevalue<=15 && waktu.getSecondsPassed()>=2) {
+                if(kepencet<=0){gameOver=true;}
+                if(level==10 && waktuSpawnx[0]>=802){gameOver=true;}
+                if(level== 15 && waktuSpawnx[0]>=1000){gameOver=true;}
+                if(level== 20 && waktuSpawnx[0]>=1000){gameOver=true;}
+                if(scorevalue>10) {
+                    timerFrenzy durasiFrenzy = new timerFrenzy();
+                    durasiFrenzy.start();
+                    if(timerFrenzy.getSecondsPassed()>0){
                     FRENZY.setImage("file:C:\\Users\\win 10\\Pictures\\FRENZY.png" ,400,100);
-                    FRENZY.setPosition(143,300);
-                }else{FRENZY.setImage("file:C:\\" ,400,100);}
+                    FRENZY.setPosition(143,300);} else{FRENZY.setImage("file:C:\\" ,400,100);}
+                }
                 if(gameOver) {
-                    String waktuhabis="Waktu telah habis\nGame over\nPoint kamu ("+namaplayer+") : " +scorevalue+"\nKlik beberapa kali untuk keluar";
+                    String waktuhabis="Burung telah habis\nGame over\nPoint kamu ("+namaplayer+") : " +scorevalue+"\nKlik beberapa kali untuk keluar";
                     b.fillText(waktuhabis, 350, 300);
                     b.strokeText(waktuhabis, 350, 300);
                     stop();
                     klikgameover=0;
                     try {
-                        waktu.stop();
                         sspawnburung.stopb();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
