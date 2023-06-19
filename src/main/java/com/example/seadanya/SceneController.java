@@ -321,7 +321,7 @@ public class SceneController {
         final TimerSimple[] waktu = {new TimerSimple()};
         waktu[0].setSecondsPassed(25);
         final boolean[] mulaidurasisprint = {true};
-        Image image = new Image("file:C:\\Users\\win 10\\Pictures\\duniax.gif",720,720,false,false);
+        Image image = new Image(String.valueOf(this.getClass().getResource("duniax.gif")) ,720,720,false,false);
         ImageView mv= new ImageView(image);
 
         Group root = new Group();
@@ -357,7 +357,7 @@ public class SceneController {
 
         ///148x135
         Sprite demon = new Sprite();
-        demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonmain.png" ,80,80);
+        demon.setImage(String.valueOf(this.getClass().getResource("demonmain.png")),80,80);
         demon.setPosition(0, 0);
 
         batasjurus=3;
@@ -381,7 +381,7 @@ public class SceneController {
 
 //=======================================================================================
         Sprite robotKepiting =new Sprite();
-        robotKepiting.setImage("file:C:\\Users\\win 10\\Pictures\\robot-kepiting1.gif" ,150,100);
+        robotKepiting.setImage(String.valueOf(this.getClass().getResource("robot-kepiting1.gif")),150,100);
         robotKepiting.setPosition(300,500);
 
         Sprite FRENZY = new Sprite();
@@ -394,7 +394,7 @@ public class SceneController {
         for (int i = 0; i < 13; i++)
         {
             moneybag[0] = new Sprite();
-            moneybag[0].setImage("file:C:\\Users\\win 10\\Pictures\\crabby.gif",95,95);
+            moneybag[0].setImage(String.valueOf(this.getClass().getResource("crabby.gif")),95,95);
             double px = (720-50) * Math.random() + 50;
             double py = (720-50) * Math.random() + 50;
             moneybag[0].setPosition(px,py);
@@ -444,7 +444,7 @@ public class SceneController {
                     w+=1;
                     if(w>3 && w<=7){
                         if(robotrusak!=1){
-                        robotKepiting.setImage("file:C:\\Users\\win 10\\Pictures\\robot-dort1.gif",150,100);}
+                        robotKepiting.setImage(String.valueOf(this.getClass().getResource("robot-dort1.gif")),150,100);}
                         robotrusak=1;
                     }
                     if(w>=8){
@@ -467,11 +467,11 @@ public class SceneController {
                     if(wizardtriggerTombol){
                         triggerchatwizard++;
                         if(triggerchatwizard==1)
-                            WizardChat.setImage("file:C:\\Users\\win 10\\Pictures\\WizardChat1.png", 690, 180);
+                            WizardChat.setImage(String.valueOf(this.getClass().getResource("WizardChat1.png")), 690, 180);
                         if(triggerchatwizard==2)
-                            WizardChat.setImage("file:C:\\Users\\win 10\\Pictures\\WizardChat2.png", 690, 180);
+                            WizardChat.setImage(String.valueOf(this.getClass().getResource("WizardChat2.png")), 690, 180);
                         if(triggerchatwizard==3){
-                            WizardChat.setImage("file:C:\\Users\\win 10\\Pictures\\WizardChat3.png", 690, 180);
+                            WizardChat.setImage(String.valueOf(this.getClass().getResource("WizardChat3.png")), 690, 180);
                             triggerchatwizard=0;}
                     }
                 }
@@ -553,8 +553,8 @@ public class SceneController {
                         Wizardberhenti=1;
                         Backdarken.setImage(String.valueOf(this.getClass().getResource("backgroundDarken.png")), 750, 750);
                         DemonDiam=1;
-                        WizardChat.setImage("file:C:\\Users\\win 10\\Pictures\\DemonChat.png", 690, 180);
-                        Skill.setImage("file:C:\\Users\\win 10\\Pictures\\fire-flame.gif", 443,250);
+                        WizardChat.setImage(String.valueOf(this.getClass().getResource("DemonChat.png")), 690, 180);
+                        Skill.setImage(String.valueOf(this.getClass().getResource("fire-flame.gif")), 443,250);
                         Skill.setPosition(demon.getPositionX()-160, demon.getPositionY()-100); //bagian sini coy
                         dmnfire[0].setSecondsPassedD(0);
                         dmnfire[0] = new DurasiJurusDemon();
@@ -569,18 +569,18 @@ public class SceneController {
                         dmnfire[0].setSecondsPassedD(0);
                         Skill.setImage("file:", 0, 0);
                         Skill.setPosition(900,900);
-                        demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonmain.png", 80, 80);
+                        demon.setImage(String.valueOf(this.getClass().getResource("demonmain.png")), 80, 80);
                         if (arah == 1) {
-                            demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonsampingkiri.png", 80, 80);
+                            demon.setImage(String.valueOf(this.getClass().getResource("demonsampingkiri.png")), 80, 80);
                         }
                         if (arah == 2) {
-                            demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonsampinkanan (2).png", 80, 80);
+                            demon.setImage(String.valueOf(this.getClass().getResource("demonsampinkanan (2).png")), 80, 80);
                         }
                         if (arah == 3) {
-                            demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonatasmn (2).png", 80, 80);
+                            demon.setImage(String.valueOf(this.getClass().getResource("demonatasmn (2).png")), 80, 80);
                         }
                         if (arah == 4) {
-                            demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonmain.png", 80, 80);
+                            demon.setImage(String.valueOf(this.getClass().getResource("demonmain.png")), 80, 80);
                         }arah=10;
                         for(int i=0; i< dmnfire.length;i++)
                             dmnfire[i].stopD();
@@ -594,7 +594,7 @@ public class SceneController {
                     }
                 }
 
-                System.out.println(dmnfire[0].getSecondsPassedD());
+                //System.out.println(dmnfire[0].getSecondsPassedD());
 
                 //======================Ledakan durasi Crab robot kepiting======================
 
@@ -616,7 +616,7 @@ public class SceneController {
                 if(waktuspawn==150){
                     px.set((720 - 50) * Math.random() + 50);
                     finalMoneybag[0] = new Sprite();
-                    finalMoneybag[0].setImage("file:C:\\Users\\win 10\\Pictures\\crabby.gif", 80, 80);
+                    finalMoneybag[0].setImage(String.valueOf(this.getClass().getResource("crabby.gif")), 80, 80);
                     finalMoneybag[0].setPositionY(850);
                     moneybagList.add(finalMoneybag[0]);
                     finalMoneybag[0].setPosition(px.get(), px.get());
@@ -674,25 +674,25 @@ public class SceneController {
                         if (!wizardtriggerTombol) {
                             if (input.contains("LEFT")) {
                                 if (arah != 5) {
-                                    demon.setImage("file:C:\\Users\\win 10\\Pictures\\demon-firekiri.gif", 80, 80);
+                                    demon.setImage(String.valueOf(this.getClass().getResource("demon-firekiri.gif")), 80, 80);
                                 }
                                 arah = 5;
                                 demon.addVelocity(-600, 0);
                             } else if (input.contains("RIGHT")) {
                                 if (arah != 6) {
-                                    demon.setImage("file:C:\\Users\\win 10\\Pictures\\demon-firekanan.gif", 80, 80);
+                                    demon.setImage(String.valueOf(this.getClass().getResource("demon-firekanan.gif")), 80, 80);
                                 }
                                 arah = 6;
                                 demon.addVelocity(600, 0);
                             } else if (input.contains("UP")) {
                                 if (arah != 7) {
-                                    demon.setImage("file:C:\\Users\\win 10\\Pictures\\demon-fireatas.gif", 80, 80);
+                                    demon.setImage(String.valueOf(this.getClass().getResource("demon-fireatas.gif")), 80, 80);
                                 }
                                 arah = 7;
                                 demon.addVelocity(0, -600);
                             } else if (input.contains("DOWN")) {
                                 if (arah != 8) {
-                                    demon.setImage("file:C:\\Users\\win 10\\Pictures\\demon-firebawah.gif", 80, 80);
+                                    demon.setImage(String.valueOf(this.getClass().getResource("demon-firebawah.gif")), 80, 80);
                                 }
                                 arah = 8;
                                 demon.addVelocity(0, 600);
@@ -703,40 +703,40 @@ public class SceneController {
                         //gerakan dengan animasi
                         if (input.contains("LEFT")) {
                             if (arah != 1) {
-                                demon.setImage("file:C:\\Users\\win 10\\Pictures\\demon-kiri.gif", 80, 80);
+                                demon.setImage(String.valueOf(this.getClass().getResource("demon-kiri.gif")), 80, 80);
                             }
                             arah = 1;
                             demon.addVelocity(-150, 0);
                         } else if (input.contains("RIGHT")) {
                             if (arah != 2) {
-                                demon.setImage("file:C:\\Users\\win 10\\Pictures\\demon-kanan.gif", 80, 80);
+                                demon.setImage(String.valueOf(this.getClass().getResource("demon-kanan.gif")), 80, 80);
                             }
                             arah = 2;
                             demon.addVelocity(150, 0);
                         } else if (input.contains("UP")) {
                             if (arah != 3) {
-                                demon.setImage("file:C:\\Users\\win 10\\Pictures\\demon-atas.gif", 80, 80);
+                                demon.setImage(String.valueOf(this.getClass().getResource("demon-atas.gif")), 80, 80);
                             }
                             arah = 3;
                             demon.addVelocity(0, -150);
                         } else if (input.contains("DOWN")) {
                             if (arah != 4) {
-                                demon.setImage("file:C:\\Users\\win 10\\Pictures\\demon.gif", 80, 80);
+                                demon.setImage(String.valueOf(this.getClass().getResource("demon.gif")), 80, 80);
                             }
                             arah = 4;
                             demon.addVelocity(0, 150);
                         } else {
                             if (arah == 1) {
-                                demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonsampingkiri.png", 80, 80);
+                                demon.setImage(String.valueOf(this.getClass().getResource("demonsampingkiri.png")), 80, 80);
                             }
                             if (arah == 2) {
-                                demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonsampinkanan (2).png", 80, 80);
+                                demon.setImage(String.valueOf(this.getClass().getResource("demonsampinkanan (2).png")), 80, 80);
                             }
                             if (arah == 3) {
-                                demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonatasmn (2).png", 80, 80);
+                                demon.setImage(String.valueOf(this.getClass().getResource("demonatasmn (2).png")), 80, 80);
                             }
                             if (arah == 4) {
-                                demon.setImage("file:C:\\Users\\win 10\\Pictures\\demonmain.png", 80, 80);
+                                demon.setImage(String.valueOf(this.getClass().getResource("demonmain.png")), 80, 80);
                             }
                             arah = 10;
                         }
@@ -770,7 +770,7 @@ public class SceneController {
                         playSE(6);
                         score.value++;
                         moneybagIter.remove();
-                        blueex.setImage("file:C:\\Users\\win 10\\Pictures\\explosion.gif",100,100);
+                        blueex.setImage(String.valueOf(this.getClass().getResource("explosion.gif")),100,100);
                         jojo[0] =false;
                         blueex.setPosition(moneybag.getPositionX(),moneybag.getPositionY());
 
@@ -831,7 +831,7 @@ public class SceneController {
                             score.value++;
                             moneybagIter.remove();
                             playSE(6);
-                            blueex.setImage("file:C:\\Users\\win 10\\Pictures\\explosion.gif",100,100);
+                            blueex.setImage(String.valueOf(this.getClass().getResource("explosion.gif")),100,100);
                             blueex.setPosition(moneybag.getPositionX(),moneybag.getPositionY());
                         }
                     //=========================================================================================================================
@@ -964,7 +964,7 @@ public class SceneController {
                     Wizardberhenti=1;
                     WizardBertemu=2;
                     Backdarken.setImage(String.valueOf(this.getClass().getResource("backgroundDarken.png")), 750, 750);
-                    WizardChat.setImage("file:C:\\Users\\win 10\\Pictures\\WizardChat1.png", 690, 180);
+                    WizardChat.setImage(String.valueOf(this.getClass().getResource("WizardChat1.png")), 690, 180);
                     WizardChat.setPosition(15, 20);
                     wizardtriggerTombol=true;
 
@@ -1004,7 +1004,7 @@ public class SceneController {
 
                 // render render render
                 if(go.getXseconds()!=0){
-                    FRENZY.setImage("file:C:\\Users\\win 10\\Pictures\\FRENZY1.png" ,400,100);
+                    FRENZY.setImage(String.valueOf(this.getClass().getResource("FRENZY1.png")) ,400,100);
                     FRENZY.setPosition(142,300);
                 }
 
@@ -1055,7 +1055,7 @@ public class SceneController {
 
                 if(waktu[0].getSecondsPassed()==0){gameOver=true;}
                 if(score.value>20&&score.value<=35 && waktu[0].getSecondsPassed()>=2) {
-                    FRENZY.setImage("file:C:\\Users\\win 10\\Pictures\\FRENZY.png" ,400,100);
+                    FRENZY.setImage(String.valueOf(this.getClass().getResource("FRENZY.png")) ,400,100);
                     FRENZY.setPosition(143,300);
                 }else{FRENZY.setImage("file:C:\\" ,400,100);}
                 Backdarken.render(gc);
@@ -1121,7 +1121,7 @@ public class SceneController {
             MainProgram.stopMusic();
             MainProgram.setCekLaguMainMenu(false);
             playMusic(2);
-        }else if (!kondisiMusikHard){}System.out.println(kondisiMusikHard);
+        }else if (!kondisiMusikHard){}//System.out.println(kondisiMusikHard);
         x=1;int makanan = 4;
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         klikgameover=0;
@@ -1133,7 +1133,7 @@ public class SceneController {
         sspawnburung.startburung();
         waktuspawnburung.setSecondsPassedb(0);
 
-        Image image = new Image("file:C:\\Users\\win 10\\Pictures\\burungback.gif",720,720,false,false);
+        Image image = new Image(String.valueOf(this.getClass().getResource("burungback.gif")),720,720,false,false);
         ImageView mv= new ImageView(image);
 
         Group root = new Group();
@@ -1182,11 +1182,11 @@ public class SceneController {
         //nagaaa
         Sprite naga = new Sprite();
         ArrayList<Sprite> nagaList = new ArrayList<Sprite>();
-        naga.setImage("file:C:\\Users\\win 10\\Pictures\\naga.gif",150,150);
+        naga.setImage(String.valueOf(this.getClass().getResource("naga.gif")),150,150);
 
         //objek animasi kalo meledak
         Sprite explode = new Sprite();
-        explode.setImage("file:C:\\Users\\win 10\\Pictures\\gambar.gif",150,150);
+        explode.setImage(String.valueOf(this.getClass().getResource("gambar.gif")),150,150);
         explode.setPosition(1000,1000);
         //timer
         LongValue lastNanoTime = new LongValue( System.nanoTime() );
@@ -1214,7 +1214,7 @@ public class SceneController {
                 // game logic
                 gc.clearRect(0, 0, 720, 720);
                 //jangan lupa pakaii
-                System.out.println(cekernilaistaticx[0][0]);
+               // System.out.println(cekernilaistaticx[0][0]);
                 if (!jojo[0] && cekernilaistaticx[0][0]>0){
                     cekernilaistaticx[0][0]++;
                     if(cekernilaistaticx[0][0]>=25){
@@ -1229,7 +1229,7 @@ public class SceneController {
 
                 if (waktuSpawnx[0] % 100 ==0 ){
                         Sprite robotKepiting = new Sprite();
-                        robotKepiting.setImage("file:C:\\Users\\win 10\\Pictures\\burung.gif", 150, 150);
+                        robotKepiting.setImage(String.valueOf(this.getClass().getResource("burung.gif")), 150, 150);
                         double py = (600) * Math.random();
                         robotKepiting.setPositionX(750);
                         robotKepiting.setPositionY(py);
@@ -1240,7 +1240,7 @@ public class SceneController {
 //System.out.println(waktuSpawnx[0]);
                 if (waktuSpawnx[0] % 120 == 0 ){
                         Sprite naga = new Sprite();
-                        naga.setImage("file:C:\\Users\\win 10\\Pictures\\naga.gif", 150, 150);
+                        naga.setImage(String.valueOf(this.getClass().getResource("naga.gif")), 150, 150);
                         double py = (400) * Math.random();
                         naga.setPositionX(750);
                         naga.setPositionY(py);
@@ -1263,7 +1263,7 @@ public class SceneController {
                                 jojo[0] =false;
                                 cekernilaistaticx[0][0] =1;
                                 //explode animation==================================
-                                explode.setImage("file:C:\\Users\\win 10\\Pictures\\explosion.gif", 150, 150);
+                                explode.setImage(String.valueOf(this.getClass().getResource("explosion.gif")), 150, 150);
                                 explode.setPosition(mouseEvent.getX()-100, mouseEvent.getY()-100);
                                 //--================================================================
                                 naga.setImage("file:",0,0);
@@ -1305,7 +1305,7 @@ public class SceneController {
                                 jojo[0] =false;
                                 cekernilaistaticx[0][0] =1;
                                 //explode animation==================================
-                                explode.setImage("file:C:\\Users\\win 10\\Pictures\\explosion.gif", 150, 150);
+                                explode.setImage(String.valueOf(this.getClass().getResource("explosion.gif")), 150, 150);
                                 explode.setPosition(mouseEvent.getX()-100, mouseEvent.getY()-100);
                                 //--================================================================
                                 robotKepiting.setImage("file:",0,0);
@@ -1331,7 +1331,7 @@ public class SceneController {
                 // render
 
                 if(go.getXseconds()!=0){
-                    FRENZY.setImage("file:C:\\Users\\win 10\\Pictures\\FRENZY1.png" ,400,100);
+                    FRENZY.setImage(String.valueOf(this.getClass().getResource("FRENZY1.png")) ,400,100);
                     FRENZY.setPosition(142,300);
                 }
 
@@ -1452,7 +1452,7 @@ public class SceneController {
                     timerFrenzy durasiFrenzy = new timerFrenzy();
                     durasiFrenzy.start();
                     if(timerFrenzy.getSecondsPassed()>0){
-                    FRENZY.setImage("file:C:\\Users\\win 10\\Pictures\\FRENZY.png" ,400,100);
+                    FRENZY.setImage(String.valueOf(this.getClass().getResource("FRENZY.png")) ,400,100);
                     FRENZY.setPosition(143,300);} else{FRENZY.setImage("file:C:\\" ,400,100);}
                 }
                 if(gameOver) {
