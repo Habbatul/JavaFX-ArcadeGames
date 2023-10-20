@@ -1,5 +1,5 @@
 # JavaFX_Game_ByHqHan
-This Game Created by <a href="https://www.instagram.com/hq.han/tagged/?next=%2Fhq.han%2F&hl=id"><b>@hq.han</b></a>
+<b>This is one of the challenging tasks I have in my third semester.</b><br>
 For the demo of game u can watch in <a href="https://www.instagram.com/reel/CiAdCd4Jepb/?utm_source=ig_web_copy_link">Here</a>
 
 ## Preview
