@@ -538,7 +538,10 @@ public class SceneController {
                         waktu[0].start();
                     }
                 });                // calculate time since last update.
-                double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
+//                double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
+
+
+                double elapsedTime = 1.0/70; //buat agar 70 fps di device manapun
                 lastNanoTime.value = currentNanoTime;
                 gc.clearRect(0, 0, 720, 720);
                 b.clearRect(0, 0, 720, 720);
@@ -1208,8 +1211,15 @@ public class SceneController {
             {
 
                 // calculate time since last update.
-                double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
+//                double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
+
+                //jadikan elapsedTime nya agar 60 fps
+                double elapsedTime = 1.0/50;
                 lastNanoTime.value = currentNanoTime;
+
+//                double fps = 1 / elapsedTime;
+//                System.out.println("FPS: " + fps);
+
                 waktuSpawnx[0] += 1;
                 // game logic
                 gc.clearRect(0, 0, 720, 720);
