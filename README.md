@@ -1,6 +1,6 @@
 # JAR Arcade Game
 
-<p align="justify">This is one of the challenging tasks I have in my third semester. This game was developed in one week, during which time I was new to the world of programming and did not have ChatGPT assistance to learn the code. However, I believe this project was a fundamental part of learning how to create software. As a beginner who had just started learning Java, my code writing was admittedly poor and hard to read. I developed this game without much consideration for clean code practices and good architecture, as it was my first time using the Java programming language. My main focus during the development of this application was to ensure that it could run and the features would function.</p>
+<p align="justify">This is one of the challenging tasks I have in my third semester. This game was developed in one week, during which time I was new to the world of programming. However, I believe this project was a fundamental part of learning how to create software. As a beginner who had just started learning Java, my code writing was admittedly poor and hard to read. I developed this game without much consideration for clean code practices and good architecture, as it was my first time using the Java programming language. My main focus during the development of this application was to ensure that it could run and the features would function.</p>
 
 For the demo of game u can watch in <a href="https://www.instagram.com/reel/CiAdCd4Jepb/?utm_source=ig_web_copy_link">Here</a>
 
